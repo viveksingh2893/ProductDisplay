@@ -35,22 +35,28 @@ const Home = ({navigation}) => {
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <ScrollView
         style={{height: height, padding: 10}}
-        contentContainerStyle={{}}>
+        >
         {data?.map(item => {
           return (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('productscreen', {item: item});
+                navigation.navigate('Product Screen', {item: item});
               }}
               key={item?.id}
               style={styles.container}>
               <View style={styles.productCard}>
+                <View style={styles.titleContainer}>
                 <Text style={styles.category}>{item?.category}</Text>
-                <Text style={styles.name}>{item?.name}</Text>
+                <Image
+                    style={{height: '50%', width: '10%'}}
+                    source={require('../assets/print.png')}
+                  />
+                  </View>
+                   <Text style={styles.name}>{item?.name}</Text>
                 <View style={styles.smallcontainer}>
                   <Text style={styles.category}>${item?.price}</Text>
                   <Image
-                    style={{height: '40%', width: '17%'}}
+                    style={{height: '23%', width: '10%'}}
                     source={require('../assets/heart.png')}
                   />
                   <Image
@@ -82,22 +88,28 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: height * 0.3,
+    height: height * 0.25,
     width: width,
-    marginTop: 50,
     backgroundColor: 'white',
     alignItems: 'flex-start',
     justifyContent: 'center',
     position: 'relative',
-    cursor: 'pointer',
+    marginTop:20,
+  },
+  titleContainer:{
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-between",
+    height:height*.04,
+    width:width*.5
   },
   productCard: {
     width: width * 0.8,
     borderRadius: 20,
-    height: height * 0.3,
-    marginTop: 50,
+    height: height * 0.2,
     backgroundColor: '#9CE5CB',
     padding: 10,
+  
   },
   category: {
     fontSize: 14,
@@ -115,7 +127,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     width: width * 0.6,
-    marginTop: 50,
   },
 });
 
